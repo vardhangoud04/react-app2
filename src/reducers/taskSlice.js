@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Action } from "history";
 import taskData from '../data/tasks.json'
 
 const initialState = [...taskData]
@@ -16,7 +15,7 @@ export const taskSlice = createSlice({
          deleteTask: (state, action) => {
             return state.filter(task => task.id !== action.payload)
          },
-         updateTask: (action) => {
+         updateTask: (state, action) => {
             return state.map(task => task.id === action.payload.id ? {...task, ...action.payload}: task)
          }
 
